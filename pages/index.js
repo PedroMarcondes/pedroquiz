@@ -1,9 +1,14 @@
+import React from 'react';
 import styled from 'styled-components';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+
 import db from '../db.json';
-import Widget  from '../src/components/Widget';
-import QuizBackground  from '../src/components/QuizBackground';
-import Footer  from '../src/components/Footer';
-import GitHubCorner  from '../src/components/GitHubCorner';
+import Widget from '../src/components/Widget';
+import QuizLogo from '../src/components/QuizLogo';
+import QuizBackground from '../src/components/QuizBackground';
+import Footer from '../src/components/Footer';
+import GitHubCorner from '../src/components/GitHubCorner';
 
 // const BackgroundImage = styled.div`
 //   background-image: url(${db.bg});
@@ -24,15 +29,37 @@ export const QuizContainer = styled.div`
 `;
 
 export default function Home() {
+  const router = useRouter();
+  const [name, setName] = React.useState('');
+
   return (
     <QuizBackground backgroundImage={db.bg}>
-      <QuizContainer>        
+      <Head>
+        <title>Pedroquiz</title>
+      </Head>
+      <QuizContainer>
+        <QuizLogo />
         <Widget>
           <Widget.Header>
-            <h1>The Legend</h1>
+            <h1>The Quiz</h1>
           </Widget.Header>
           <Widget.Content>
-            <p>lorem ipsum dolor sit amet...</p>
+            <form onSubmit={function (infosDoEvento) {
+              infosDoEvento.preventDefault();
+              router.push(`/quiz?name=${name}`);
+            }}
+            >
+              <input
+                onChange={function (infosDoEvento) {
+                  setName(infosDoEvento.target.value);
+                }}
+                placeholder="Digite seu nome"
+              />
+              <button type="submit" disabled={name.length === 0}>
+                Jogar
+                {name}
+              </button>
+            </form>
           </Widget.Content>
         </Widget>
 
@@ -40,7 +67,7 @@ export default function Home() {
           <Widget.Content>
             <h1>Quizes da Galera</h1>
 
-            <p>lorem ipsum dolor sit amet...</p>          
+            <p>lorem ipsum dolor sit amet...</p>
           </Widget.Content>
         </Widget>
 
@@ -48,5 +75,5 @@ export default function Home() {
       </QuizContainer>
       <GitHubCorner projectUrl="https://github.com/PedroMarcondes" />
     </QuizBackground>
-  )
+  );
 }
