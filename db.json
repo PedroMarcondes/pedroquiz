@@ -38,6 +38,30 @@
          "Ronaldinho Gaúcho",
          "Roberto Carlos"
       ]
+    },
+    {
+      "image": "https://media.giphy.com/media/S78kX8El1wC09T2lzH/giphy.gif",
+      "title": "Quem ganhou a Copa do Mundo de 2018?",
+      "description": "Foi a última copa que aconteceu",
+      "answer": 2,
+      "alternatives": [
+         "Espanha",
+         "Brasil",
+         "França",
+         "Alemanha"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/lok1uvFDHMwpMOtzYD/giphy.gif",
+      "title": "Qual o pais que mais ganhou Copas do Mundo?",
+      "description": "",
+      "answer": 3,
+      "alternatives": [
+         "Alemanha",
+         "Itália",
+         "França",
+         "Brasil"
+      ]
     }
   ],
   "external": [
